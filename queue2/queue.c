@@ -1,12 +1,13 @@
 static int queue[100];
-static int tos; 	// top of stack  // 전역변수는 초기화 가능
+static int rear; 	
+static int front;
 
 void push(int data) {		// func. definition
-   queue[tos] = data;
-   ++tos;
+   queue[rear] = data;
+   ++rear;
 }
 
 int pop(void) {
-   --tos;
-   return queue[tos];
+   --rear;
+   return queue[rear];
 }

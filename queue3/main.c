@@ -1,34 +1,32 @@
 #include <stdio.h>
 #include "queue.h"
 
-int main(void){
+int main(void)
+{
 
-    struct queue s1, s2;
+    struct queue q1, q2;
+    initQueue(&q1);
+    initQueue(&q2);
 
-    initqueue(&s1);
-    initqueue(&s2);
-
-    push(&s1, 969);
-    push(&s1, 800);
-    push(&s1, 700);
-
-    push(100);
-    push(200);
-    push(300);
+    push(&q1, 100);
+    push(&q1, 200);
     
-    printf("1st pop() : %d\n", pop());
-    printf("2st pop() : %d\n", pop());
-    printf("3st pop() : %d\n", pop());
+    printf("1st pop() : %d\n", pop(&q1));
 
-    pop(&s1);
+    push(&q1, 300);
 
-    push(&s2, 900);
-    push(&s2, 800);
-    push(&s2, 700);
+    printf("2nd pop() : %d\n", pop(&q1));
+    printf("3rd pop() : %d\n", pop(&q1));
 
-    printf("s1 1st pop() : %d\n", pop(&s2));
-    printf("s1 2nd pop() : %d\n", pop(&s2));
-    printf("s1 3rd pop() : %d\n", pop(&s2));
+    push(&q2, 900);
+    push(&q2, 800);
+    
+    printf("1st pop() : %d\n", pop(&q2));
+
+    push(&q2, 700);
+
+    printf("2nd pop() : %d\n", pop(&q2));
+    printf("3rd pop() : %d\n", pop(&q2));
 
     return 0;
 }

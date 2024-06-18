@@ -1,15 +1,15 @@
 #ifndef QUEUE_H
 #define QUEUE_H
-#define ARRAYSIZE 100
 
 struct queue {
-    int array[ARRAYSIZE];
-    int tos;
+    int qArr[100];
+    int front;
+    int rear;
 };
 
-void initqueue(struct queue *pq);
+void push(struct queue *q, int data);
+int pop(struct queue *q);
+void initQueue(struct queue *q);
 
-void push(struct queue *pq, int data);		// func. declaration
-int pop(struct queue *pq);
 
 #endif
