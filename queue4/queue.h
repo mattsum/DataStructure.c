@@ -13,7 +13,7 @@ void clearQueue(Queue *pq);
 
 
 void push(Queue *pq, int data);
-void pop(Queue *pq, int *qData);
+int pop(Queue *pq, int *qData);
 
 
 

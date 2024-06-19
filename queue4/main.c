@@ -33,7 +33,7 @@ int main(void)
     pop(&q2, &re);
     printf("3rd pop() : %d\n", re);
 
-    clearQueue(&q1);
-    clearQueue(&q2);
+    clearnupQueue(&q1);
+    clearnupQueue(&q2);
     return 0;
 }

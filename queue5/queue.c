@@ -4,11 +4,27 @@
 #include <string.h>
 #include "queue.h"
 
-void push(Queue *pq, int *qData)
+void initQueue(Queue *pq, int size, int eleSize)
+{
+    pq->pArr = malloc(sizeof(int) * size);
+    assert(pq->pArr /*!=NULL*/);
+    pq->size = size;
+    pq->eleSize = eleSize;
+    pq->front = 0;
+    pq->rear = 0;
+}
+
+void cleanupQueue(Queue *pq)
+{
+    free(pq->pArr);
+}
+
+void push(Queue *pq, int *qData, int eleSize)
 {
     assert(pq->rear != pq->size);
 
-    memcpy( (unsigned char*)pq->qArr + (pq->rear * pq->eleSize), qData, pq->eleSize);
+    //memcpy(&pq->pArr[pq->rear * pq->eleSize], qData, pq->eleSize);
+    memcpy( (unsigned char*)pq->pArr + (pq->eleSize * pq->rear), qData, pq->eleSize);
     ++pq->rear;
 }
 
@@ -18,19 +34,6 @@ void pop(Queue *pq, int *qData)
     
     int i = pq->front;
     ++pq->front;
-    memcpy(qData, (unsigned char*)pq->qArr + (i * pq->eleSize), pq->eleSize);
-}
-
-void initQueue(Queue *pq, int size, int eleSize)
-{
-    pq->qArr = malloc(sizeof(int) * size);
-    pq->size = size;
-    pq->eleSize = eleSize;
-    pq->front = 0;
-    pq->rear = 0;
-}
-
-void clearQueue(Queue *pq)
-{
-    free(pq->qArr);
+    //memcpy(pdata, &pq->pArr[i], pq->eleSize);
+    memcpy(qData, (unsigned char*)pq->pArr + (i * pq->eleSize), pq->eleSize);
 }
